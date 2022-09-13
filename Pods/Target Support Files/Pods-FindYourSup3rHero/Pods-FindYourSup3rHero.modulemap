@@ -1,0 +1,6 @@
+framework module Pods_FindYourSup3rHero {
+  umbrella header "Pods-FindYourSup3rHero-umbrella.h"
+
+  export *
+  module * { export * }
+}
