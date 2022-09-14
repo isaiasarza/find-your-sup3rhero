@@ -7,6 +7,8 @@
 
 Se implementan en el AuthViewController. El manejo de usuarios y claves está integrado con Firebase Authentication.
 
+Para lograr un registro exitoso hay que introducir un email (no hace falta que sea real, solo que respete el formato).
+
 ## Home
 
 El home consta de un tab bar con dos opciones:
@@ -18,7 +20,12 @@ El home consta de un tab bar con dos opciones:
 
 * La imagen de background utilizada en AuthViewController no se muestra correctamente en modo portrait.
 * Al navegar a HomeTabBarController, no se pudo setear como RootController. Por esta razón, se muestra el Back Button en la barra de estado, y esto permite volver hacia atrás sin cerrar sesión.
-* Las imágenes se descargan utilizando un TaskGroup. Si bien esto permite visualizar los datos sin necesidad de tener descargadas todas las imágenes, las imágenes se visualizan todas juntas (por cada página de 15 elementos). Sería una buena mejora ir mostrando a medida que se van descargando. 
+* Las imágenes se descargan utilizando un TaskGroup. Si bien esto permite visualizar los datos sin necesidad de tener descargadas todas las imágenes, las imágenes se visualizan todas juntas (por cada página de 15 elementos). Sería una buena mejora ir mostrando a medida que se van descargando.
+
+## Usuario de prueba
+
+arza.isaias@gmail.com / Haha!12
+ 
 
 ## Agradecimientos
 
