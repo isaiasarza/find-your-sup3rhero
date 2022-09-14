@@ -52,6 +52,7 @@ class CharacterListViewController: UIViewController {
             do{
                 let characterDataWrapper: CharacterDataWrapper = try JSONDecoder().decode(CharacterDataWrapper.self, from: data)
                 let characters: [Character] = try characterDataWrapper.data!.results!
+                //TODO: descargar las imágenes de forma asincrónica, la implementación actual es bloqueante.
                 try await downloadImages(characters: characters)
                 self.characters.append(contentsOf: characters)
                 self.isLoading = false

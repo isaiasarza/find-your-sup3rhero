@@ -281,10 +281,10 @@
             </objects>
             <point key="canvasLocation" x="3273.913043478261" y="-414.50892857142856"/>
         </scene>
-        <!--Home-->
+        <!--Home Tab Bar Controller-->
         <scene sceneID="fr8-GT-Lg0">
             <objects>
-                <tabBarController storyboardIdentifier="Home" useStoryboardIdentifierAsRestorationIdentifier="YES" id="YZ4-xD-aUr" customClass="Home" customModule="FindYourSup3rHero" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="Home" useStoryboardIdentifierAsRestorationIdentifier="YES" id="YZ4-xD-aUr" customClass="HomeTabBarController" customModule="FindYourSup3rHero" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="AsX-vX-p3z"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Iah-4l-ji6">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>

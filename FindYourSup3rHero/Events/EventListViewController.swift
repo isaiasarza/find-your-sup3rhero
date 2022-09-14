@@ -44,6 +44,7 @@ class EventListViewController: UIViewController {
             do{
                 let eventDataWrapper: EventsDataWrapper = try JSONDecoder().decode(EventsDataWrapper.self, from: data)
                 let events: [Event] = try eventDataWrapper.data!.results!
+                //TODO: descargar las imágenes de forma asincrónica, la implementación actual es bloqueante.
                 try await downloadImages(events: events)
                 self.events.append(contentsOf: events)
                 self.isLoading = false

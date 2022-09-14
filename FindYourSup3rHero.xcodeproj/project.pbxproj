@@ -19,7 +19,6 @@
 		FB10C98928CB5F8100C695C4 /* LoadingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB10C98728CB5F8100C695C4 /* LoadingTableViewCell.swift */; };
 		FB10C98A28CB5F8100C695C4 /* LoadingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB10C98828CB5F8100C695C4 /* LoadingTableViewCell.xib */; };
 		FB10C98C28CBE32E00C695C4 /* CharacterDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB10C98B28CBE32E00C695C4 /* CharacterDetailViewController.swift */; };
-		FB1CD80428C78FA100DB489B /* SimpleHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB1CD80328C78FA100DB489B /* SimpleHomeViewController.swift */; };
 		FB43487328CA1E4700072847 /* CharacterListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB43487228CA1E4700072847 /* CharacterListViewController.swift */; };
 		FB43487528CA28BC00072847 /* CharactersDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB43487428CA28BC00072847 /* CharactersDTO.swift */; };
 		FB43487728CA309C00072847 /* MarvelApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB43487628CA309C00072847 /* MarvelApiManager.swift */; };
@@ -28,8 +27,7 @@
 		FB45D33A28CF6BF50096EB57 /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB45D33828CF6BF50096EB57 /* EventTableViewCell.swift */; };
 		FB45D33B28CF6BF50096EB57 /* EventTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB45D33928CF6BF50096EB57 /* EventTableViewCell.xib */; };
 		FB45D33D28CF88E30096EB57 /* EventDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB45D33C28CF88E30096EB57 /* EventDetailViewController.swift */; };
-		FB66B91228C94DE300B40490 /* SimpleHomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FB66B91128C94DE300B40490 /* SimpleHomeViewController.xib */; };
-		FB66B91A28C96A0F00B40490 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB66B91928C96A0F00B40490 /* Home.swift */; };
+		FB66B91A28C96A0F00B40490 /* HomeTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB66B91928C96A0F00B40490 /* HomeTabBarController.swift */; };
 		FB81D3ED28D0BCD3004EA78C /* AlertUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB81D3EC28D0BCD3004EA78C /* AlertUtils.swift */; };
 		FB81D3EF28D10EE3004EA78C /* SignOutButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB81D3EE28D10EE3004EA78C /* SignOutButton.swift */; };
 		FB81D3F128D11A8B004EA78C /* AuthErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB81D3F028D11A8B004EA78C /* AuthErrors.swift */; };
@@ -58,7 +56,6 @@
 		FB10C98728CB5F8100C695C4 /* LoadingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingTableViewCell.swift; sourceTree = "<group>"; };
 		FB10C98828CB5F8100C695C4 /* LoadingTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingTableViewCell.xib; sourceTree = "<group>"; };
 		FB10C98B28CBE32E00C695C4 /* CharacterDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailViewController.swift; sourceTree = "<group>"; };
-		FB1CD80328C78FA100DB489B /* SimpleHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleHomeViewController.swift; sourceTree = "<group>"; };
 		FB43487228CA1E4700072847 /* CharacterListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListViewController.swift; sourceTree = "<group>"; };
 		FB43487428CA28BC00072847 /* CharactersDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersDTO.swift; sourceTree = "<group>"; };
 		FB43487628CA309C00072847 /* MarvelApiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelApiManager.swift; sourceTree = "<group>"; };
@@ -67,8 +64,7 @@
 		FB45D33828CF6BF50096EB57 /* EventTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
 		FB45D33928CF6BF50096EB57 /* EventTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventTableViewCell.xib; sourceTree = "<group>"; };
 		FB45D33C28CF88E30096EB57 /* EventDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailViewController.swift; sourceTree = "<group>"; };
-		FB66B91128C94DE300B40490 /* SimpleHomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SimpleHomeViewController.xib; sourceTree = "<group>"; };
-		FB66B91928C96A0F00B40490 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
+		FB66B91928C96A0F00B40490 /* HomeTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabBarController.swift; sourceTree = "<group>"; };
 		FB81D3EC28D0BCD3004EA78C /* AlertUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertUtils.swift; sourceTree = "<group>"; };
 		FB81D3EE28D10EE3004EA78C /* SignOutButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignOutButton.swift; sourceTree = "<group>"; };
 		FB81D3F028D11A8B004EA78C /* AuthErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthErrors.swift; sourceTree = "<group>"; };
@@ -77,6 +73,7 @@
 		FBB37DFA28CCDF9400A431FA /* ComicTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicTableViewCell.swift; sourceTree = "<group>"; };
 		FBB37DFB28CCDF9400A431FA /* ComicTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ComicTableViewCell.xib; sourceTree = "<group>"; };
 		FBBEE44728D25CD9000C340D /* ImageUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUtils.swift; sourceTree = "<group>"; };
+		FBBEE45228D26C1A000C340D /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		FBE7D87928CE10F100848C50 /* EventListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -130,40 +127,95 @@
 		FB0226D828C77EEA00CEB026 /* FindYourSup3rHero */ = {
 			isa = PBXGroup;
 			children = (
+				FBBEE44F28D26A61000C340D /* Helpers */,
+				FBBEE44E28D26A30000C340D /* Protocols */,
+				FBBEE44D28D26A17000C340D /* Commons */,
+				FBBEE44C28D269FF000C340D /* APIs */,
+				FBBEE44A28D26971000C340D /* Events */,
+				FBBEE44928D26950000C340D /* Characters */,
 				FBA5C79D28C7D47300285BFF /* GoogleService-Info.plist */,
 				FB0226D928C77EEA00CEB026 /* AppDelegate.swift */,
 				FB0226DB28C77EEA00CEB026 /* SceneDelegate.swift */,
+				FB0226DD28C77EEA00CEB026 /* AuthViewController.swift */,
+				FB81D3F028D11A8B004EA78C /* AuthErrors.swift */,
+				FB66B91928C96A0F00B40490 /* HomeTabBarController.swift */,
+				FB8CC4A128CFC65900C6B508 /* ConfigVariables.swift */,
+				FB0226DF28C77EEA00CEB026 /* Main.storyboard */,
+				FB0226E228C77EEC00CEB026 /* Assets.xcassets */,
+				FB0226E428C77EEC00CEB026 /* LaunchScreen.storyboard */,
+				FB0226E728C77EEC00CEB026 /* Info.plist */,
+				FBBEE45228D26C1A000C340D /* README.md */,
+			);
+			path = FindYourSup3rHero;
+			sourceTree = "<group>";
+		};
+		FBBEE44928D26950000C340D /* Characters */ = {
+			isa = PBXGroup;
+			children = (
 				FB43487228CA1E4700072847 /* CharacterListViewController.swift */,
 				FB10C98328CB554800C695C4 /* CharacterTableViewCell.swift */,
 				FB10C98428CB554800C695C4 /* CharacterTableViewCell.xib */,
 				FB10C98B28CBE32E00C695C4 /* CharacterDetailViewController.swift */,
-				FBB37DFA28CCDF9400A431FA /* ComicTableViewCell.swift */,
-				FBB37DFB28CCDF9400A431FA /* ComicTableViewCell.xib */,
+			);
+			path = Characters;
+			sourceTree = "<group>";
+		};
+		FBBEE44A28D26971000C340D /* Events */ = {
+			isa = PBXGroup;
+			children = (
 				FBE7D87928CE10F100848C50 /* EventListViewController.swift */,
 				FB45D33828CF6BF50096EB57 /* EventTableViewCell.swift */,
 				FB45D33928CF6BF50096EB57 /* EventTableViewCell.xib */,
 				FB45D33C28CF88E30096EB57 /* EventDetailViewController.swift */,
+			);
+			path = Events;
+			sourceTree = "<group>";
+		};
+		FBBEE44B28D26996000C340D /* DTOs */ = {
+			isa = PBXGroup;
+			children = (
 				FB43487428CA28BC00072847 /* CharactersDTO.swift */,
 				FB45D33428CF64270096EB57 /* EventsDTO.swift */,
 				FB45D33628CF66FA0096EB57 /* CommonsDTO.swift */,
-				FB1CD80328C78FA100DB489B /* SimpleHomeViewController.swift */,
-				FB0226DD28C77EEA00CEB026 /* AuthViewController.swift */,
-				FB66B91928C96A0F00B40490 /* Home.swift */,
+			);
+			path = DTOs;
+			sourceTree = "<group>";
+		};
+		FBBEE44C28D269FF000C340D /* APIs */ = {
+			isa = PBXGroup;
+			children = (
+				FBBEE44B28D26996000C340D /* DTOs */,
 				FB43487628CA309C00072847 /* MarvelApiManager.swift */,
+			);
+			path = APIs;
+			sourceTree = "<group>";
+		};
+		FBBEE44D28D26A17000C340D /* Commons */ = {
+			isa = PBXGroup;
+			children = (
 				FB10C98728CB5F8100C695C4 /* LoadingTableViewCell.swift */,
 				FB10C98828CB5F8100C695C4 /* LoadingTableViewCell.xib */,
-				FB0226DF28C77EEA00CEB026 /* Main.storyboard */,
-				FB66B91128C94DE300B40490 /* SimpleHomeViewController.xib */,
-				FB0226E228C77EEC00CEB026 /* Assets.xcassets */,
-				FB0226E428C77EEC00CEB026 /* LaunchScreen.storyboard */,
-				FB0226E728C77EEC00CEB026 /* Info.plist */,
-				FB8CC4A128CFC65900C6B508 /* ConfigVariables.swift */,
+				FBB37DFA28CCDF9400A431FA /* ComicTableViewCell.swift */,
+				FBB37DFB28CCDF9400A431FA /* ComicTableViewCell.xib */,
+			);
+			path = Commons;
+			sourceTree = "<group>";
+		};
+		FBBEE44E28D26A30000C340D /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
 				FB81D3EC28D0BCD3004EA78C /* AlertUtils.swift */,
 				FB81D3EE28D10EE3004EA78C /* SignOutButton.swift */,
-				FB81D3F028D11A8B004EA78C /* AuthErrors.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		FBBEE44F28D26A61000C340D /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
 				FBBEE44728D25CD9000C340D /* ImageUtils.swift */,
 			);
-			path = FindYourSup3rHero;
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -234,7 +286,6 @@
 				FBB37DFD28CCDF9400A431FA /* ComicTableViewCell.xib in Resources */,
 				FB45D33B28CF6BF50096EB57 /* EventTableViewCell.xib in Resources */,
 				FB0226E128C77EEA00CEB026 /* Main.storyboard in Resources */,
-				FB66B91228C94DE300B40490 /* SimpleHomeViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -298,11 +349,10 @@
 				FB10C98528CB554800C695C4 /* CharacterTableViewCell.swift in Sources */,
 				FB0226DA28C77EEA00CEB026 /* AppDelegate.swift in Sources */,
 				FB45D33A28CF6BF50096EB57 /* EventTableViewCell.swift in Sources */,
-				FB66B91A28C96A0F00B40490 /* Home.swift in Sources */,
+				FB66B91A28C96A0F00B40490 /* HomeTabBarController.swift in Sources */,
 				FB0226DC28C77EEA00CEB026 /* SceneDelegate.swift in Sources */,
 				FB81D3ED28D0BCD3004EA78C /* AlertUtils.swift in Sources */,
 				FB43487328CA1E4700072847 /* CharacterListViewController.swift in Sources */,
-				FB1CD80428C78FA100DB489B /* SimpleHomeViewController.swift in Sources */,
 				FB10C98928CB5F8100C695C4 /* LoadingTableViewCell.swift in Sources */,
 				FBE7D87A28CE10F100848C50 /* EventListViewController.swift in Sources */,
 				FB45D33D28CF88E30096EB57 /* EventDetailViewController.swift in Sources */,
