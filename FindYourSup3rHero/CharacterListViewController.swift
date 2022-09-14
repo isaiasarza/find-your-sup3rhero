@@ -12,6 +12,7 @@ class CharacterListViewController: UIViewController {
     
     @IBOutlet weak var charactersTableView: UITableView!
     private var characters: [Character] = []
+    private var images: [UIImage] = []
     private var isLoading = false
     private let userDefaults = UserDefaults.standard
 
@@ -51,6 +52,7 @@ class CharacterListViewController: UIViewController {
             do{
                 let characterDataWrapper: CharacterDataWrapper = try JSONDecoder().decode(CharacterDataWrapper.self, from: data)
                 let characters: [Character] = try characterDataWrapper.data!.results!
+                try await downloadImages(characters: characters)
                 self.characters.append(contentsOf: characters)
                 self.isLoading = false
                 charactersTableView.reloadData()
@@ -59,6 +61,15 @@ class CharacterListViewController: UIViewController {
             }
         }
     }
+    
+    private func downloadImages(characters: [Character]) async {
+        for character in characters {
+            let imageURL: String = "\(character.thumbnail!.path!).\(character.thumbnail!.extension!)"
+            let image = try await ImageUtils.fetchImage(URLAddress: imageURL) as! UIImage?
+            self.images.append(image!)
+        }
+    }
+    
 }
 
 extension CharacterListViewController: UITableViewDataSource, UITableViewDelegate{
@@ -78,6 +89,8 @@ extension CharacterListViewController: UITableViewDataSource, UITableViewDelegat
             let cell = charactersTableView.dequeueReusableCell(withIdentifier: "characterTableViewCell", for: indexPath) as! CharacterTableViewCell
             cell.name.text = characters[indexPath.row].name
             cell.characterDescription.text = characters[indexPath.row].description
+            
+            cell.thumbnail.image = images[indexPath.row]
             return cell
         }else{
             let cell = charactersTableView.dequeueReusableCell(withIdentifier: "loadingcellid", for: indexPath) as! LoadingTableViewCell
@@ -104,6 +117,7 @@ extension CharacterListViewController: UITableViewDataSource, UITableViewDelegat
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
         let vc = storyBoard.instantiateViewController(withIdentifier: "CharacterDetailViewController") as! CharacterDetailViewController
         vc.character = selectedCharacter
+        vc.image = images[indexPath.row]
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }
@@ -126,20 +140,11 @@ extension CharacterListViewController: SignOutButtonProtocol{
             self.navigationController?.popViewController(animated: true)
         }
     }
+    
+    
 }
 
-extension UIImageView {
-    func loadFrom(URLAddress: String) {
-        guard let url = URL(string: URLAddress) else {
-            return
-        }
-        
-        DispatchQueue.main.async { [weak self] in
-            if let imageData = try? Data(contentsOf: url) {
-                if let loadedImage = UIImage(data: imageData) {
-                        self?.image = loadedImage
-                }
-            }
-        }
-    }
+enum UserValidationError: String, Error {
+    case noFirstNameProvided = "Please insert your first name."
+    
 }

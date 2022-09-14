@@ -12,8 +12,10 @@ class CharacterDetailViewController: UIViewController {
     @IBOutlet weak var characterName: UILabel!
     @IBOutlet weak var characterDescription: UILabel!
     @IBOutlet weak var comicsTableView: UITableView!
+    @IBOutlet weak var characterThumbnail: UIImageView!
     var character: Character?
     var comics: [Summary] = []
+    var image: UIImage?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +24,7 @@ class CharacterDetailViewController: UIViewController {
         comics.append(contentsOf: character?.comics!.items! ?? [])
         comicsTableView.dataSource = self
         comicsTableView.register(UINib(nibName: "ComicTableViewCell", bundle: nil), forCellReuseIdentifier: "comicTableViewCell")
+        characterThumbnail.image = image!
         self.navigationItem.title = character?.name!
     }
 

@@ -11,15 +11,18 @@ class EventDetailViewController: UIViewController {
     @IBOutlet weak var eventName: UILabel!
     @IBOutlet weak var eventDescription: UILabel!
     @IBOutlet weak var comicsToDiscussTableView: UITableView!
+    @IBOutlet weak var eventThumbnail: UIImageView!
     
     var event: Event?
     var comicsToDiscuss: [Summary] = []
+    var image: UIImage?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         eventName!.text = event?.title!
         eventDescription!.text = event?.description!
         eventDescription!.numberOfLines = 0
+        eventThumbnail.image = image!
         comicsToDiscuss.append(contentsOf: event!.comics!.items!)
         comicsToDiscussTableView.dataSource = self
         comicsToDiscussTableView.register(UINib(nibName: "ComicTableViewCell", bundle: nil), forCellReuseIdentifier: "comicTableViewCell")

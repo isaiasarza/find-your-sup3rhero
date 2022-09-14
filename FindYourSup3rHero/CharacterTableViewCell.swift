@@ -12,12 +12,13 @@ class CharacterTableViewCell: UITableViewCell {
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var characterDescription: UILabel!
     @IBOutlet weak var thumbnail: UIImageView!
-    
+    var imageURL: String?
    
     override func awakeFromNib() {
         super.awakeFromNib()
         name.textColor = .darkGray
         characterDescription.numberOfLines = 3
+        //thumbnail.loadFrom(URLAddress: imageURL!)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

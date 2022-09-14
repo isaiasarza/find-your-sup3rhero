@@ -8,6 +8,7 @@
 //
 
 import Foundation
+import UIKit
 
 struct CharacterDataWrapper: Decodable {
     var code: Int?

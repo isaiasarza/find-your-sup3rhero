@@ -37,6 +37,7 @@
 		FBA5C79E28C7D47300285BFF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FBA5C79D28C7D47300285BFF /* GoogleService-Info.plist */; };
 		FBB37DFC28CCDF9400A431FA /* ComicTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBB37DFA28CCDF9400A431FA /* ComicTableViewCell.swift */; };
 		FBB37DFD28CCDF9400A431FA /* ComicTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FBB37DFB28CCDF9400A431FA /* ComicTableViewCell.xib */; };
+		FBBEE44828D25CD9000C340D /* ImageUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBBEE44728D25CD9000C340D /* ImageUtils.swift */; };
 		FBE7D87A28CE10F100848C50 /* EventListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBE7D87928CE10F100848C50 /* EventListViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -75,6 +76,7 @@
 		FBA5C79D28C7D47300285BFF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FBB37DFA28CCDF9400A431FA /* ComicTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicTableViewCell.swift; sourceTree = "<group>"; };
 		FBB37DFB28CCDF9400A431FA /* ComicTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ComicTableViewCell.xib; sourceTree = "<group>"; };
+		FBBEE44728D25CD9000C340D /* ImageUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUtils.swift; sourceTree = "<group>"; };
 		FBE7D87928CE10F100848C50 /* EventListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -159,6 +161,7 @@
 				FB81D3EC28D0BCD3004EA78C /* AlertUtils.swift */,
 				FB81D3EE28D10EE3004EA78C /* SignOutButton.swift */,
 				FB81D3F028D11A8B004EA78C /* AuthErrors.swift */,
+				FBBEE44728D25CD9000C340D /* ImageUtils.swift */,
 			);
 			path = FindYourSup3rHero;
 			sourceTree = "<group>";
@@ -305,6 +308,7 @@
 				FB45D33D28CF88E30096EB57 /* EventDetailViewController.swift in Sources */,
 				FB81D3F128D11A8B004EA78C /* AuthErrors.swift in Sources */,
 				FB43487728CA309C00072847 /* MarvelApiManager.swift in Sources */,
+				FBBEE44828D25CD9000C340D /* ImageUtils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

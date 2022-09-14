@@ -13,6 +13,7 @@ class EventListViewController: UIViewController {
     private var events: [Event] = []
     private var isLoading = false
     private let userDefaults = UserDefaults.standard
+    private var images: [UIImage] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,6 +43,7 @@ class EventListViewController: UIViewController {
             do{
                 let eventDataWrapper: EventsDataWrapper = try JSONDecoder().decode(EventsDataWrapper.self, from: data)
                 let events: [Event] = try eventDataWrapper.data!.results!
+                try await downloadImages(events: events)
                 self.events.append(contentsOf: events)
                 self.isLoading = false
                 print("event 0", self.events[0].title!)
@@ -49,6 +51,14 @@ class EventListViewController: UIViewController {
             }catch{
                 print("fetch characters error!")
             }
+        }
+    }
+    
+    private func downloadImages(events: [Event]) async {
+        for event in events {
+            let imageURL: String = "\(event.thumbnail!.path!).\(event.thumbnail!.extension!)"
+            let image = try await ImageUtils.fetchImage(URLAddress: imageURL) as! UIImage?
+            self.images.append(image!)
         }
     }
 
@@ -69,6 +79,7 @@ extension EventListViewController: UITableViewDataSource, UITableViewDelegate{
         if indexPath.section == 0{
             let cell = eventsTableView.dequeueReusableCell(withIdentifier: "eventsTableViewCell", for: indexPath) as! EventTableViewCell
             cell.eventName.text = events[indexPath.row].title!
+            cell.eventThumbnail.image = self.images[indexPath.row]
             return cell
         }else {
             let cell = eventsTableView.dequeueReusableCell(withIdentifier: "loadingcellid", for: indexPath) as! LoadingTableViewCell
@@ -95,6 +106,7 @@ extension EventListViewController: UITableViewDataSource, UITableViewDelegate{
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
         let vc = storyBoard.instantiateViewController(withIdentifier: "EventDetailViewController") as! EventDetailViewController
         vc.event = selectedEvent
+        vc.image = images[indexPath.row]
         self.present(vc, animated: true)
     }
 }

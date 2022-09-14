@@ -190,6 +190,7 @@
                         <outlet property="comicsToDiscussTableView" destination="Yju-2x-6sR" id="sFZ-7w-32I"/>
                         <outlet property="eventDescription" destination="OX7-V2-JCn" id="8YQ-z9-DKx"/>
                         <outlet property="eventName" destination="KJ9-Bg-QRI" id="O9V-dV-QMN"/>
+                        <outlet property="eventThumbnail" destination="KiY-6q-fuB" id="xPa-s9-Odn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a8g-B3-KD3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -271,6 +272,7 @@
                     <navigationItem key="navigationItem" id="3sJ-Qo-ZLY"/>
                     <connections>
                         <outlet property="characterDescription" destination="abm-2i-M1P" id="0Gi-Fh-85H"/>
+                        <outlet property="characterThumbnail" destination="MCD-rM-Mhd" id="RBP-EU-1Ha"/>
                         <outlet property="comicsTableView" destination="614-oe-gSi" id="Cbv-LX-Hez"/>
                     </connections>
                 </viewController>
