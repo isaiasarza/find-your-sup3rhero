@@ -18,7 +18,6 @@ class CharacterTableViewCell: UITableViewCell {
         super.awakeFromNib()
         name.textColor = .darkGray
         characterDescription.numberOfLines = 3
-        //thumbnail.loadFrom(URLAddress: imageURL!)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

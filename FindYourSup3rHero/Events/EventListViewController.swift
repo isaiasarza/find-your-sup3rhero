@@ -13,7 +13,7 @@ class EventListViewController: UIViewController {
     private var events: [Event] = []
     private var isLoading = false
     private let userDefaults = UserDefaults.standard
-    private var images: [UIImage] = []
+    private var imagesDictionary: [Int: UIImage] = [:]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,25 +44,38 @@ class EventListViewController: UIViewController {
             do{
                 let eventDataWrapper: EventsDataWrapper = try JSONDecoder().decode(EventsDataWrapper.self, from: data)
                 let events: [Event] = try eventDataWrapper.data!.results!
-                //TODO: descargar las imágenes de forma asincrónica, la implementación actual es bloqueante.
-                try await downloadImages(events: events)
                 self.events.append(contentsOf: events)
                 self.isLoading = false
                 eventsTableView.reloadData()
+                async let downloading = downloadImagesTaskGroup(events: events)
             }catch{
                 print("fetch characters error!")
             }
         }
     }
     
-    private func downloadImages(events: [Event]) async {
-        for event in events {
-            let imageURL: String = "\(event.thumbnail!.path!).\(event.thumbnail!.extension!)"
-            let image = try await ImageUtils.fetchImage(URLAddress: imageURL) as! UIImage?
-            self.images.append(image!)
+    private func downloadImagesTaskGroup(events: [Event]) async {
+        let dictionary = await withTaskGroup(of: (Int, UIImage).self,
+                                             returning: [Int: UIImage].self,
+                                             body: { taskGroup in
+            for event in events {
+                taskGroup.addTask {
+                    let imageURL: String = "\(event.thumbnail!.path!).\(event.thumbnail!.extension!)"
+                    let image = await ImageUtils.fetchImage(URLAddress: imageURL) as! UIImage?
+                    return (event.id!, image!)
+                }
+            }
+            var childTaskResults = [Int: UIImage]()
+            for await result in taskGroup {
+                childTaskResults[result.0] = result.1
+            }
+            return childTaskResults
+        })
+        for (key, value) in dictionary {
+            self.imagesDictionary[key] = value
         }
+        eventsTableView.reloadData()
     }
-
 }
 
 extension EventListViewController: UITableViewDataSource, UITableViewDelegate{
@@ -79,8 +92,14 @@ extension EventListViewController: UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0{
             let cell = eventsTableView.dequeueReusableCell(withIdentifier: "eventsTableViewCell", for: indexPath) as! EventTableViewCell
-            cell.eventName.text = events[indexPath.row].title!
-            cell.eventThumbnail.image = self.images[indexPath.row]
+            let currentEvent = events[indexPath.row]
+            cell.eventName.text = currentEvent.title!
+            if let image = imagesDictionary[currentEvent.id!] {
+                cell.eventThumbnail.image = image
+            }else{
+                // default image
+                cell.eventThumbnail.image = ImageUtils.resizeImage(image: UIImage(named: "downloading")!, targetSize: CGSize(width: 120, height: 120))
+            }
             return cell
         }else {
             let cell = eventsTableView.dequeueReusableCell(withIdentifier: "loadingcellid", for: indexPath) as! LoadingTableViewCell
@@ -107,7 +126,11 @@ extension EventListViewController: UITableViewDataSource, UITableViewDelegate{
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
         let vc = storyBoard.instantiateViewController(withIdentifier: "EventDetailViewController") as! EventDetailViewController
         vc.event = selectedEvent
-        vc.image = images[indexPath.row]
+        if let image = imagesDictionary[selectedEvent.id!]{
+            vc.image = image
+        }else{
+            vc.image = ImageUtils.resizeImage(image: UIImage(named: "downloading")!, targetSize: CGSize(width: 120, height: 120))
+        }
         self.present(vc, animated: true)
     }
 }

@@ -12,7 +12,7 @@ class CharacterListViewController: UIViewController {
     
     @IBOutlet weak var charactersTableView: UITableView!
     private var characters: [Character] = []
-    private var images: [UIImage] = []
+    private var imagesDictionary: [Int: UIImage] = [:]
     private var isLoading = false
     private let userDefaults = UserDefaults.standard
 
@@ -52,25 +52,40 @@ class CharacterListViewController: UIViewController {
             do{
                 let characterDataWrapper: CharacterDataWrapper = try JSONDecoder().decode(CharacterDataWrapper.self, from: data)
                 let characters: [Character] = try characterDataWrapper.data!.results!
-                //TODO: descargar las imágenes de forma asincrónica, la implementación actual es bloqueante.
-                try await downloadImages(characters: characters)
+                
                 self.characters.append(contentsOf: characters)
                 self.isLoading = false
                 charactersTableView.reloadData()
+                async let downloading = downloadImagesTaskGroup(characters: characters)
             }catch{
                 print("fetch characters error!")
             }
         }
     }
     
-    private func downloadImages(characters: [Character]) async {
-        for character in characters {
-            let imageURL: String = "\(character.thumbnail!.path!).\(character.thumbnail!.extension!)"
-            let image = try await ImageUtils.fetchImage(URLAddress: imageURL) as! UIImage?
-            self.images.append(image!)
+    private func downloadImagesTaskGroup(characters: [Character]) async {
+        let dictionary = await withTaskGroup(of: (Int, UIImage).self,
+                                             returning: [Int: UIImage].self,
+                                             body: { taskGroup in
+            
+            for character in characters {
+                taskGroup.addTask {
+                    let imageURL: String = "\(character.thumbnail!.path!).\(character.thumbnail!.extension!)"
+                    let image = await ImageUtils.fetchImage(URLAddress: imageURL) as! UIImage?
+                    return (character.id!, image!)
+                }
+            }
+            var childTaskResults = [Int: UIImage]()
+            for await result in taskGroup {
+                childTaskResults[result.0] = result.1
+            }
+            return childTaskResults
+        })
+        for (key, value) in dictionary {
+            self.imagesDictionary[key] = value
         }
+        charactersTableView.reloadData()
     }
-    
 }
 
 extension CharacterListViewController: UITableViewDataSource, UITableViewDelegate{
@@ -88,10 +103,14 @@ extension CharacterListViewController: UITableViewDataSource, UITableViewDelegat
                 self.loadMoreData()
             }
             let cell = charactersTableView.dequeueReusableCell(withIdentifier: "characterTableViewCell", for: indexPath) as! CharacterTableViewCell
-            cell.name.text = characters[indexPath.row].name
-            cell.characterDescription.text = characters[indexPath.row].description
-            
-            cell.thumbnail.image = images[indexPath.row]
+            let currentCharacter = characters[indexPath.row]
+            cell.name.text = currentCharacter.name
+            cell.characterDescription.text = currentCharacter.description
+            if let image = imagesDictionary[currentCharacter.id!]{
+                cell.thumbnail.image = image
+            }else{
+                cell.thumbnail.image = ImageUtils.resizeImage(image: UIImage(named: "downloading")!, targetSize: CGSize(width: 120, height: 120))
+            }
             return cell
         }else{
             let cell = charactersTableView.dequeueReusableCell(withIdentifier: "loadingcellid", for: indexPath) as! LoadingTableViewCell
@@ -118,7 +137,11 @@ extension CharacterListViewController: UITableViewDataSource, UITableViewDelegat
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
         let vc = storyBoard.instantiateViewController(withIdentifier: "CharacterDetailViewController") as! CharacterDetailViewController
         vc.character = selectedCharacter
-        vc.image = images[indexPath.row]
+        if let image = imagesDictionary[selectedCharacter.id!]{
+            vc.image = image
+        }else{
+            vc.image = ImageUtils.resizeImage(image: UIImage(named: "downloading")!, targetSize: CGSize(width: 120, height: 120))
+        }
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }

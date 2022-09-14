@@ -18,7 +18,7 @@ El home consta de un tab bar con dos opciones:
 
 * La imagen de background utilizada en AuthViewController no se muestra correctamente en modo portrait.
 * Al navegar a HomeTabBarController, no se pudo setear como RootController. Por esta razón, se muestra el Back Button en la barra de estado, y esto permite volver hacia atrás sin cerrar sesión.
-* Las imágenes se descargan de forma bloqueante. En el caso del scroll infinito, luego de buscar una nueva página se descargan las imágenes correspondientes. Esto provoca lentitud al interactuar con la app, y se estará corrigiendo en los próximos días. 
+* Las imágenes se descargan utilizando un TaskGroup. Si bien esto permite visualizar los datos sin necesidad de tener descargadas todas las imágenes, las imágenes se visualizan todas juntas (por cada página de 15 elementos). Sería una buena mejora ir mostrando a medida que se van descargando. 
 
 ## Agradecimientos
 
