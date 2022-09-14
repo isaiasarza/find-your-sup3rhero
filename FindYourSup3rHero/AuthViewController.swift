@@ -13,10 +13,14 @@ class AuthViewController: UIViewController {
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var signInButton: UIButton!
     @IBOutlet weak var signUpButton: UIButton!
+    @IBOutlet weak var containerFieldsView: UIView!
     private let userDefaults = UserDefaults.standard
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.assignbackground()
+        containerFieldsView.backgroundColor = UIColor(white: 1, alpha: 0.5)
+        containerFieldsView.layer.cornerRadius = 5
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -101,6 +105,20 @@ class AuthViewController: UIViewController {
         }
     }
     
+    func assignbackground(){
+            let background = UIImage(named: "marvel_1")
+
+            var imageView : UIImageView!
+            imageView = UIImageView(frame: view.bounds)
+            imageView.contentMode =  UIView.ContentMode.scaleAspectFill
+            imageView.clipsToBounds = true
+            imageView.image = background
+            imageView.center = view.center
+            //imageView.layer.opacity = 0.75
+            view.addSubview(imageView)
+            self.view.sendSubviewToBack(imageView)
+        }
+    
     private func handleSignUpError(error: Error?){
         var errorMessage: String?
         if let errCode = AuthErrorCode.Code(rawValue: error!._code) {
@@ -115,6 +133,10 @@ class AuthViewController: UIViewController {
             }
         }
         self.showErrorAlert(errorMessage: errorMessage!)
+    }
+    
+    override var prefersStatusBarHidden: Bool{
+        return true
     }
     
 }
