@@ -28,6 +28,7 @@ class EventListViewController: UIViewController {
     }
     
     private func getEvents(){
+        isLoading = true
         let limit = 25
         let orderBy = "startDate"
         let urlString: String = MarvelApiManager.getEventsUrl(limit: limit, orderBy: orderBy)
@@ -46,7 +47,6 @@ class EventListViewController: UIViewController {
                 try await downloadImages(events: events)
                 self.events.append(contentsOf: events)
                 self.isLoading = false
-                print("event 0", self.events[0].title!)
                 eventsTableView.reloadData()
             }catch{
                 print("fetch characters error!")
